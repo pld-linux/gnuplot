@@ -8,15 +8,16 @@ Summary(ru):	Программа для построения графиков математических выражений и данных
 Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
-Version:	3.8i.0
+Version:	3.8j.0
 Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	14b819c565153fee4f71eb5d47ec82bf
+# Source0-md5:	929e210e2d6585d34b029fa59d39915f
 Source1:	%{name}.desktop
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
+Patch2:		%{name}-no_lisp.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -78,6 +79,7 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
@@ -125,6 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/%{name}
 %{_mandir}/man1/*
-%{_datadir}/gnuplot.gih
+%{_datadir}/%{name}
 %{_infodir}/gnuplot*
 %{_applnkdir}/Scientific/Plotting/*
