@@ -4,12 +4,13 @@ Summary(fr): 	Le programme de traçage de courbe de GNU.
 Summary(pl): 	GNU program do robienia wykresów
 Summary(tr): 	Matematiksel görselleþtirme paketi
 Name:        	gnuplot
-Version:     	3.7
+Version:     	3.7.0.8
 Release:     	1
 Copyright:   	GPL
 Group:       	Applications/Math
 Group(pl):   	Aplikacje/Matematyczne
-Source:      	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
+Source:      	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/beta/%{name}-%{version}.tar.gz
+Patch:		gnuplot-DESTDIR.patch
 URL:         	http://www.geocities.com/SiliconValley/Foothills/6647/
 BuildPrereq:	readline-devel
 BuildPrereq:	libpng-devel
@@ -46,9 +47,11 @@ kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 
 %prep
 %setup -q 
+%patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" \
+automake
+LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-gnu-readline \
 	--with-png \
@@ -58,11 +61,8 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir},%{_mandir}/man1}
 
-install -s gnuplot gnuplot_x11 $RPM_BUILD_ROOT%{_bindir}
-install docs/gnuplot.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install docs/gnuplot.gih $RPM_BUILD_ROOT%{_datadir}
+make install DESTDIR=$RPM_BUILD_ROOT
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/*
 
