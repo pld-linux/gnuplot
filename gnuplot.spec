@@ -1,20 +1,22 @@
 Summary:	A program for plotting mathematical expressions and data
 Summary(de):	GNU-Plotter-Paket
+Summary(es):	Paquete para trazar gráficos
 Summary(fr):	Le programme de traçage de courbe de GNU
 Summary(pl):	Program GNU do robienia wykresów
+Summary(pt_BR):	Pacote para traçar gráficos
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
-Release:	12
+Release:	14
 License:	GPL
 Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
-Source0:	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnuplot.org/pub/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-acfix.patch
-URL:		http://www.geocities.com/SiliconValley/Foothills/6647/
+URL:		http://www.gnuplot.org/
 BuildRequires:	readline-devel
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	XFree86-devel
@@ -38,6 +40,10 @@ dimensions and in many different formats.
 Das GNU-Plotting-Paket. Dient zur grafischen Ausgabe von Daten in
 einem X-Fenster oder in eine Datei.
 
+%description -l es
+Este es el paquete GNU de ploteado. Se puede usar para crear gráficos
+en X Window o para archivo.
+
 %description -l fr
 Paquetage de tracé de GNU. Il peut être utilisé pour faire des graphes
 de données dans une fenêtre X ou vers un fichier.
@@ -45,6 +51,10 @@ de données dans une fenêtre X ou vers un fichier.
 %description -l pl
 GNU plot rysuje wykresy, które mo¿na drukowaæ, zapisywaæ w pliku albo
 ogl±daæ w okienku X.
+
+%description -l pt_BR
+Este é o pacote GNU de plotagem. Pode ser usado para gerar gráficos em
+X Window ou para arquivo.
 
 %description -l tr
 Gnuplot, bir fonksiyonun ya da bir veri kümesinin grafiðinin elde
