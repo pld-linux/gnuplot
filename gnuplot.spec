@@ -4,15 +4,14 @@ Summary(fr): Le programme de traçage de courbe de GNU.
 Summary(pl): GNU program do robienia wykresów
 Summary(tr): Matematiksel görselleþtirme paketi
 Name:        gnuplot
-%define vermain	3.6
-%define versub	beta347
-Version:     %{vermain}%{versub}
+Version:     3.7
 Release:     1
 Copyright:   GPL
 Group:       Applications/Math
-Source:      ftp://cmpc1.phys.soton.ac.uk/pub/%{name}-%{versub}.tar.gz
-URL:         http://www.nas.nasa.gov/~woo/gnuplot/beta/
-BuildRoot:   /tmp/%{name}-%{version}-root
+Group(pl):   Aplikacje/Matematyczne
+Source:      ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
+URL:         http://www.geocities.com/SiliconValley/Foothills/6647/
+BuildRoot:   /tmp/%{name}-%{version}-%{release}-root
 
 %description
 This is the GNU plotting package.  It can be used to graph
@@ -35,7 +34,7 @@ Gnuplot, bir fonksiyonun ya da bir veri kümesinin grafiðinin elde edilmesinde
 kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 
 %prep
-%setup -q -n %{name}
+%setup -q 
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure \
@@ -62,6 +61,11 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/gnuplot.gih
 
 %changelog
+* Sun Jan 24 1999 Artur Frysiak <wiget@usa.net>
+  [3.7-1]
+- changed Sources address
+- changed URL address
+
 * Sat Oct 17 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.6beta347-2]
 - changed way pass $RPM_OPT_FLAGS (as a configure eviroment variable).
