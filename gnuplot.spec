@@ -7,7 +7,7 @@ Summary(pt_BR):	Pacote para traçar gráficos
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
-Release:	15
+Release:	16
 License:	GPL
 Group:		Applications/Math
 Source0:	http://prdownloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -15,13 +15,13 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-acfix.patch
 URL:		http://gnuplot.sourceforge.net/
-BuildRequires:	readline-devel
-BuildRequires:	libpng >= 1.0.8
 BuildRequires:	XFree86-devel
-BuildRequires:	zlib-devel
-BuildRequires:	ncurses-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libpng >= 1.0.8
+BuildRequires:	ncurses-devel
+BuildRequires:	readline-devel
+BuildRequires:	zlib-devel
 #BuildRequires:	xemacs-lisp-programming
 #or --without-lisp-files
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,7 +69,10 @@ aclocal -I m4
 autoconf
 autoheader
 
-%configure \
+if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
+	CPPFLAGS="`pkg-config libpng12 --cflags`"
+fi
+%configure CPPFLAGS="$CPPFLAGS" \
 	--with-readline=gnu \
 	--with-png \
 	--without-gd \

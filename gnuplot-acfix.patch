@@ -13,3 +13,23 @@
      builtin and then its argument prototype would still apply.  */
  char $2();
  ]),
+--- gnuplot-3.7.1/configure.in.orig	Thu Aug 19 16:20:19 1999
++++ gnuplot-3.7.1/configure.in	Sat Oct 20 21:06:36 2001
+@@ -385,12 +385,12 @@
+ [#ifdef sun
+ yes
+ #endif
+-], AC_CHECK_LIB(suntool, window_create,dnl
+-    AC_CHECK_HEADER(suntool/sunview.h,dnl
+-    AC_DEFINE(SUN, 1,
++], [AC_CHECK_LIB(suntool, window_create,dnl
++    [AC_CHECK_HEADER(suntool/sunview.h,dnl
++    [AC_DEFINE(SUN, 1,
+               [ Define if you want to use the sunview terminal (sun). ])dnl
+-    TERMLIBS="$TERMLIBS -lsuntool -lsunwindow -lpixrect"),,dnl
+-    [-lsunwindow -lpixrect]))
++    TERMLIBS="$TERMLIBS -lsuntool -lsunwindow -lpixrect"])],,dnl
++    [-lsunwindow -lpixrect])])
+ 
+ dnl Process with and enable options
+ 
