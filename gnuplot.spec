@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 - use %{name} and %{version} macros,
 - `mkdir -p' replaced with more standard `install -d',
 - added full %attr description in %files,
-- removed unnecessary empty /usr/share/gnuplot directory,
+- removed unnecessary empty %{_datadir}/gnuplot directory,
 - added pl translation,
 - fixed using $RPM_OPT_FLAGS.
 
