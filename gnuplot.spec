@@ -10,7 +10,8 @@ Copyright:   	GPL
 Group:       	Applications/Math
 Group(pl):   	Aplikacje/Matematyczne
 Source:      	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/beta/%{name}-%{version}.tar.gz
-Patch:		gnuplot-DESTDIR.patch
+Patch0:		gnuplot-DESTDIR.patch
+Patch1:		gnuplot-png.patch
 URL:         	http://www.geocities.com/SiliconValley/Foothills/6647/
 BuildRequires:	readline-devel
 BuildRequires:	libpng-devel
@@ -19,6 +20,8 @@ BuildRequires:	gd-devel
 BuildRequires:	svgalib-devel
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel
+#BuildRequires:	xemacs-lisp-programming
+#or --without-lisp-files
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
@@ -47,7 +50,8 @@ kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 
 %prep
 %setup -q 
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 automake
@@ -56,7 +60,10 @@ LDFLAGS="-s"; export LDFLAGS
 	--with-gnu-readline \
 	--with-png \
 	--with-gd \
-	--with-x
+	--with-x \
+	--without-lisp-files \
+	--without-tutorial
+
 make
 
 %install
