@@ -1,35 +1,20 @@
---- gnuplot-3.7.1/m4/path-lib.m4.orig	Thu Aug 19 16:20:19 1999
-+++ gnuplot-3.7.1/m4/path-lib.m4	Sat Oct 20 21:06:36 2001
-@@ -14,11 +14,7 @@
- AC_TRY_LINK(dnl
- ifelse([$2], [main], , dnl Avoid conflicting decl of main.
- [/* Override any gcc2 internal prototype to avoid an error.  */
--]ifelse(AC_LANG, CPLUSPLUS, [#ifdef __cplusplus
--extern "C"
--#endif
--])dnl
--[/* We use char because int might match the return type of a gcc2
-+ /* We use char because int might match the return type of a gcc2
-     builtin and then its argument prototype would still apply.  */
- char $2();
- ]),
---- gnuplot-3.7.1/configure.in.orig	Thu Aug 19 16:20:19 1999
-+++ gnuplot-3.7.1/configure.in	Sat Oct 20 21:06:36 2001
-@@ -385,12 +385,12 @@
+--- gnuplot-3.7.2/configure.in.orig	Thu Jan 31 20:22:26 2002
++++ gnuplot-3.7.2/configure.in	Sun Aug  4 00:28:26 2002
+@@ -390,12 +390,12 @@
  [#ifdef sun
  yes
  #endif
--], AC_CHECK_LIB(suntool, window_create,dnl
--    AC_CHECK_HEADER(suntool/sunview.h,dnl
+-], AC_CHECK_LIB(suntool, window_create,
+-    AC_CHECK_HEADER(suntool/sunview.h,
 -    AC_DEFINE(SUN, 1,
-+], [AC_CHECK_LIB(suntool, window_create,dnl
-+    [AC_CHECK_HEADER(suntool/sunview.h,dnl
++], [AC_CHECK_LIB(suntool, window_create,
++    [AC_CHECK_HEADER(suntool/sunview.h,
 +    [AC_DEFINE(SUN, 1,
-               [ Define if you want to use the sunview terminal (sun). ])dnl
--    TERMLIBS="$TERMLIBS -lsuntool -lsunwindow -lpixrect"),,dnl
+               [ Define if you want to use the sunview terminal (sun). ])
+-    TERMLIBS="-lsuntool -lsunwindow -lpixrect $TERMLIBS"),,
 -    [-lsunwindow -lpixrect]))
-+    TERMLIBS="$TERMLIBS -lsuntool -lsunwindow -lpixrect"])],,dnl
++    TERMLIBS="-lsuntool -lsunwindow -lpixrect $TERMLIBS"])],,
 +    [-lsunwindow -lpixrect])])
  
- dnl Process with and enable options
+ dnl Process enable options
  
