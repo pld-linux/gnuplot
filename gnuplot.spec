@@ -12,13 +12,13 @@ Group(pl):   	Aplikacje/Matematyczne
 Source:      	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/beta/%{name}-%{version}.tar.gz
 Patch:		gnuplot-DESTDIR.patch
 URL:         	http://www.geocities.com/SiliconValley/Foothills/6647/
-BuildPrereq:	readline-devel
-BuildPrereq:	libpng-devel
-BuildPrereq:	XFree86-devel
-BuildPrereq:	gd-devel
-BuildPrereq:	svgalib-devel
-BuildPrereq:	zlib-devel
-BuildPrereq:	ncurses-devel
+BuildRequires:	readline-devel
+BuildRequires:	libpng-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	gd-devel
+BuildRequires:	svgalib-devel
+BuildRequires:	zlib-devel
+BuildRequires:	ncurses-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
