@@ -13,6 +13,7 @@ Release:	6
 License:	GPL
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
+# Source0-md5:	92f2ef0d6ab39a3fcaa0d008bf1b21c8
 Source1:	%{name}.desktop
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-acfix.patch
