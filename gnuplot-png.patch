@@ -1,0 +1,12 @@
+diff -Nur gnuplot-3.7.0.8/term/gif.trm gnuplot-3.7.0.8.new/term/gif.trm
+--- gnuplot-3.7.0.8/term/gif.trm	Wed Jun  9 12:05:11 1999
++++ gnuplot-3.7.0.8.new/term/gif.trm	Sun Nov  7 13:06:54 1999
+@@ -455,7 +455,7 @@
+ {
+     if (gif_state.flags & GIF_USE_INTERLACE)
+ 	gdImageInterlace(gif_state.image, 1);
+-    gdImageGif(gif_state.image, gpoutfile);
++    gdImagePng(gif_state.image, gpoutfile);
+     gdImageDestroy(gif_state.image);
+ }
+ 
