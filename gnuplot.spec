@@ -8,12 +8,12 @@ Summary(ru):	Программа для построения графиков математических выражений и данных
 Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
-Version:	3.8j.0
-Release:	3
+Version:	3.8k.0
+Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	929e210e2d6585d34b029fa59d39915f
+# Source0-md5:	fa0ae3e37cb1deb2c91374e0c7096837
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
