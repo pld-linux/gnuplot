@@ -5,7 +5,7 @@ Summary(pl):	GNU program do robienia wykresów
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
-Release:	2
+Release:	9
 License:	GPL
 Group:		Applications/Math
 Group(pl):	Aplikacje/Matematyczne
