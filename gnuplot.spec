@@ -18,7 +18,7 @@ BuildPrereq:	gd-devel
 BuildPrereq:	svgalib-devel
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
-BuildRoot:   	/tmp/%{name}-%{version}-%{release}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 This is the GNU plotting package.  It can be used to graph
