@@ -16,7 +16,7 @@ Source0:	ftp://ftp.gnuplot.org/pub/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-acfix.patch
-URL:		http://www.gnuplot.org/
+URL:		http://www.ucc.ie/gnuplot/
 BuildRequires:	readline-devel
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	XFree86-devel
