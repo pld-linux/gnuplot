@@ -21,7 +21,7 @@ BuildRequires:	ncurses-devel
 Prereq:		/usr/sbin/fix-info-dir
 #BuildRequires:	xemacs-lisp-programming
 #or --without-lisp-files
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr
 %define		_datadir	%{_prefix}/share/misc
