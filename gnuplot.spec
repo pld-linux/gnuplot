@@ -7,7 +7,7 @@ Summary(pt_BR):	Pacote para traçar gráficos
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
-Release:	14
+Release:	15
 License:	GPL
 Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
@@ -72,7 +72,7 @@ autoconf
 autoheader
 
 %configure \
-	--with-gnu-readline \
+	--with-readline=gnu \
 	--with-png \
 	--without-gd \
 	--with-x \
