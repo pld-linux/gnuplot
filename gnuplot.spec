@@ -4,12 +4,12 @@ Summary(es):	Paquete para trazar grАficos
 Summary(fr):	Le programme de traГage de courbe de GNU
 Summary(pl):	Program GNU do robienia wykresСw
 Summary(pt_BR):	Pacote para traГar grАficos
-Summary(ru): Программа для построения графиков математических выражений и данных
+Summary(ru):	Программа для построения графиков математических выражений и данных
 Summary(tr):	Matematiksel gЖrselleЧtirme paketi
-Summary(uk): Програма для побудови граф╕к╕в математичних вираз╕в та даних
+Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
 Version:	3.7.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Math
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/gnuplot/%{name}-%{version}.tar.gz
@@ -59,16 +59,16 @@ X Window ou para arquivo.
 %description -l ru
 Gnuplot - это интерактивная программа построения графиков, управляемая
 с командной строки. Gnuplot особенно хорошо подходит для презентации
-научных данных и может применяться для отображения функций и данных
-в 2-х и 3-х измерениях и во многих различных форматах.
+научных данных и может применяться для отображения функций и данных в
+2-х и 3-х измерениях и во многих различных форматах.
 
 %description -l tr
 Gnuplot, bir fonksiyonun ya da bir veri kЭmesinin grafiПinin elde
 edilmesinde kullanЩlan, Гok yetenekli bir gЖrselleЧtirme aracЩdЩr.
 
 %description -l uk
-Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться
-з командного рядка. Gnuplot особливо гарно п╕дходить для презентац╕╖
+Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
+командного рядка. Gnuplot особливо гарно п╕дходить для презентац╕╖
 наукових даних та може застосовуватись для в╕дображення функц╕й та
 даних в 2-х та 3-х вим╕рах та в багатьох р╕зних форматах.
 
