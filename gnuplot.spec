@@ -1,6 +1,6 @@
 Summary:	A program for plotting mathematical expressions and data
 Summary(de):	GNU-Plotter-Paket
-Summary(fr):	Le programme de traçage de courbe de GNU.
+Summary(fr):	Le programme de traçage de courbe de GNU
 Summary(pl):	GNU program do robienia wykresów
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
@@ -8,6 +8,7 @@ Version:	3.7.1
 Release:	11
 License:	GPL
 Group:		Applications/Math
+Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
 Source0:	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
@@ -18,11 +19,12 @@ BuildRequires:	libpng >= 1.0.8
 BuildRequires:	XFree86-devel
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 #BuildRequires:	xemacs-lisp-programming
 #or --without-lisp-files
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr
 %define		_datadir	%{_prefix}/share/misc
 
 %description
