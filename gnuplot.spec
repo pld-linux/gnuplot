@@ -20,6 +20,10 @@ BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
+%define		_datadir	%{_prefix}/share/misc
+
 %description
 This is the GNU plotting package.  It can be used to graph
 data in an X window or to a file.
@@ -45,10 +49,7 @@ kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" \
-./configure \
-	--target=%{_target_platform} \
-	--host=%{_host} \
-	--prefix=/usr/X11R6 \
+%configure \
 	--with-gnu-readline \
 	--with-png \
 	--with-gd \
@@ -57,22 +58,22 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/X11R6/{bin,share/man/man1}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir},%{_mandir}/man1}
 
-install -s gnuplot gnuplot_x11 $RPM_BUILD_ROOT/usr/X11R6/bin
-install docs/gnuplot.1 $RPM_BUILD_ROOT/usr/X11R6/share/man/man1
-install docs/gnuplot.gih $RPM_BUILD_ROOT/usr/X11R6/share
+install -s gnuplot gnuplot_x11 $RPM_BUILD_ROOT%{_bindir}
+install docs/gnuplot.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install docs/gnuplot.gih $RPM_BUILD_ROOT%{_datadir}
 
-gzip -9fn $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/*
+gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /usr/X11R6/bin/*
-/usr/X11R6/share/man/man1/*
-/usr/X11R6/share/gnuplot.gih
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
+%{_datadir}/gnuplot.gih
 
 %changelog
 * Sun Jan 24 1999 Artur Frysiak <wiget@usa.net>
