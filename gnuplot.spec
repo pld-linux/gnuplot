@@ -86,7 +86,6 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 %patch2 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoheader}
