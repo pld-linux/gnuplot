@@ -74,38 +74,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_datadir}/gnuplot.gih
-
-%changelog
-* Sun Jan 24 1999 Artur Frysiak <wiget@usa.net>
-  [3.7-1]
-- changed Sources address
-- changed URL address
-
-* Sat Oct 17 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.6beta347-2]
-- changed way pass $RPM_OPT_FLAGS (as a configure eviroment variable).
-
-* Mon Sep 28 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
-  [3.6beta347-1]
-- changed Version / Release numbering scheme,
-- use %{name} and %{version} macros,
-- `mkdir -p' replaced with more standard `install -d',
-- added full %attr description in %files,
-- removed unnecessary empty %{_datadir}/gnuplot directory,
-- added pl translation,
-- fixed using $RPM_OPT_FLAGS.
-
-* Fri Sep 11 1998 Jeff Johnson <jbj@redhat.com>
-- update to 2.6beta347
-
-* Sat Aug 15 1998 Jeff Johnson <jbj@redhat.com>
-- build root
-
-* Thu May 07 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Mon Oct 20 1997 Donnie Barnes <djb@redhat.com>
-- spec file cleanups
-
-* Thu Jul 10 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
