@@ -9,10 +9,11 @@ Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
 Version:	3.7.2
-Release:	5
+Release:	6
 License:	GPL
 Group:		Applications/Math
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/gnuplot/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-acfix.patch
 Patch2:		%{name}-round.patch
@@ -100,7 +101,8 @@ makeinfo gnuplot.texi
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_infodir}
+install -d $RPM_BUILD_ROOT{%{_infodir},%{_applnkdir}/Scientific/Plotting}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Plotting/%{name}.desktop
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
@@ -119,3 +121,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %{_datadir}/gnuplot.gih
 %{_infodir}/gnuplot*
+%{_applnkdir}/Scientific/Plotting/*
