@@ -79,9 +79,9 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 %patch2 -p1
 
 %build
-aclocal -I m4
+%{__aclocal} -I m4
 %{__autoconf}
-autoheader
+%{__autoheader}
 
 %configure \
 	--with-readline=gnu \
