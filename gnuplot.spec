@@ -67,7 +67,7 @@ LDFLAGS="-s"; export LDFLAGS
 	--without-linux-vga \
 	--without-tutorial
 
-make
+%{__make}
 (cd docs; makeinfo gnuplot.texi)
 
 %install
