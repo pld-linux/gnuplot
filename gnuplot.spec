@@ -16,7 +16,6 @@ URL:		http://www.geocities.com/SiliconValley/Foothills/6647/
 BuildRequires:	readline-devel
 BuildRequires:	libpng-devel
 BuildRequires:	XFree86-devel
-BuildRequires:	svgalib-devel
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel
 Prereq:		/usr/sbin/fix-info-dir
