@@ -9,7 +9,7 @@ Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
 Version:	4.0.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -23,10 +23,13 @@ URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gd-devel
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
+BuildRequires:	pdflib-devel
 BuildRequires:	readline-devel
+BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 #BuildRequires:	xemacs-lisp-programming
 #or --without-lisp-files
@@ -92,8 +95,9 @@ rm -f missing
 
 %configure \
 	--with-readline=gnu \
+	--enable-history-file \
 	--with-png \
-	--without-gd \
+	--with-gd \
 	--with-x \
 	--without-lisp-files \
 	--without-linux-vga \
