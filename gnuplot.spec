@@ -6,10 +6,10 @@ Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
 Release:	1
-Copyright:	GPL
+License:	GPL
 Group:		Applications/Math
 Group(pl):	Aplikacje/Matematyczne
-Source:		ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		gnuplot-DESTDIR.patch
 Patch1:		gnuplot-info.patch
 URL:		http://www.geocities.com/SiliconValley/Foothills/6647/
@@ -26,14 +26,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_datadir	%{_prefix}/share/misc
 
 %description
-Gnuplot is a command-line driven, interactive function plotting program
-especially suited for scientific data representation. Gnuplot can be used
-to plot functions and data points in both two and three dimensions and in
-many different formats.
+Gnuplot is a command-line driven, interactive function plotting
+program especially suited for scientific data representation. Gnuplot
+can be used to plot functions and data points in both two and three
+dimensions and in many different formats.
 
 %description -l de
-Das GNU-Plotting-Paket. Dient zur grafischen Ausgabe von Daten in 
-einem X-Fenster oder in eine Datei. 
+Das GNU-Plotting-Paket. Dient zur grafischen Ausgabe von Daten in
+einem X-Fenster oder in eine Datei.
 
 %description -l fr
 Paquetage de tracé de GNU. Il peut être utilisé pour faire des graphes
@@ -44,8 +44,8 @@ GNU plot rysuje wykresy, które mo¿na drukowaæ, zapisywaæ w pliku albo
 ogl±daæ w okienku X.
 
 %description -l tr
-Gnuplot, bir fonksiyonun ya da bir veri kümesinin grafiðinin elde edilmesinde
-kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
+Gnuplot, bir fonksiyonun ya da bir veri kümesinin grafiðinin elde
+edilmesinde kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 
 %prep
 %setup -q
@@ -78,7 +78,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 install docs/gnuplot.info* $RPM_BUILD_ROOT%{_infodir}
 
-gzip -9fn $RPM_BUILD_ROOT{%{_mandir}/man1/*,%{_infodir}/*}
+gzip -9nf $RPM_BUILD_ROOT{%{_mandir}/man1/*,%{_infodir}/*}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
