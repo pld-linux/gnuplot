@@ -37,7 +37,8 @@ kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 %setup -q 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure \
+CFLAGS="$RPM_OPT_FLAGS" \
+./configure %{_target} \
 	--prefix=/usr \
 	--with-gnu-readline \
 	--with-png
