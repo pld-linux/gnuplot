@@ -57,7 +57,6 @@ aclocal -I m4
 autoconf
 autoheader
 
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-gnu-readline \
 	--with-png \
@@ -77,8 +76,6 @@ install -d $RPM_BUILD_ROOT%{_infodir}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install docs/gnuplot.info* $RPM_BUILD_ROOT%{_infodir}
-
-gzip -9nf $RPM_BUILD_ROOT{%{_mandir}/man1/*,%{_infodir}/*}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
