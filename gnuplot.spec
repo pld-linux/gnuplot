@@ -12,7 +12,7 @@ Version:	3.7.2
 Release:	2
 License:	GPL
 Group:		Applications/Math
-Source0:	http://prdownloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-acfix.patch
 Patch2:		%{name}-round.patch
@@ -83,10 +83,7 @@ aclocal -I m4
 %{__autoconf}
 autoheader
 
-if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
-	CPPFLAGS="`pkg-config libpng12 --cflags`"
-fi
-%configure CPPFLAGS="$CPPFLAGS" \
+%configure \
 	--with-readline=gnu \
 	--with-png \
 	--without-gd \
@@ -96,7 +93,8 @@ fi
 	--without-tutorial
 
 %{__make}
-(cd docs; makeinfo gnuplot.texi)
+cd docs
+makeinfo gnuplot.texi
 
 %install
 rm -rf $RPM_BUILD_ROOT
