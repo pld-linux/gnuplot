@@ -12,11 +12,11 @@ License:	GPL
 Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
 Group(pl):	Aplikacje/Matematyczne
-Source0:	ftp://ftp.gnuplot.org/pub/gnuplot/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-acfix.patch
-URL:		http://www.ucc.ie/gnuplot/
+URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	readline-devel
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	XFree86-devel
