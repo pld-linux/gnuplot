@@ -9,13 +9,14 @@ Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
 Version:	3.7.2
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Math
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-acfix.patch
 Patch2:		%{name}-round.patch
+Patch3:		%{name}-info_install.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -77,6 +78,7 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__aclocal} -I m4
@@ -101,8 +103,6 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_infodir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-rm -r $RPM_BUILD_ROOT%{_infodir}/dir*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
