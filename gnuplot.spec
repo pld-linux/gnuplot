@@ -10,8 +10,6 @@ Version:	3.7.1
 Release:	15
 License:	GPL
 Group:		Applications/Math
-Group(de):	Applikationen/Mathematik
-Group(pl):	Aplikacje/Matematyczne
 Source0:	http://prdownloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
