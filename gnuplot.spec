@@ -5,7 +5,7 @@ Summary(pl):	GNU program do robienia wykresów
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
-Release:	10
+Release: 11
 License:	GPL
 Group:		Applications/Math
 Group(pl):	Aplikacje/Matematyczne
@@ -14,7 +14,7 @@ Patch0:		gnuplot-DESTDIR.patch
 Patch1:		gnuplot-info.patch
 URL:		http://www.geocities.com/SiliconValley/Foothills/6647/
 BuildRequires:	readline-devel
-BuildRequires:	libpng-devel
+BuildRequires:	libpng >= 1.0.8
 BuildRequires:	XFree86-devel
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel
