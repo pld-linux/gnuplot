@@ -13,6 +13,11 @@ Source:      	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
 URL:         	http://www.geocities.com/SiliconValley/Foothills/6647/
 BuildPrereq:	readline-devel
 BuildPrereq:	libpng-devel
+BuildPrereq:	XFree86-devel
+BuildPrereq:	gd-devel
+BuildPrereq:	svgalib-devel
+BuildPrereq:	zlib-devel
+BuildPrereq:	ncurses-devel
 BuildRoot:   	/tmp/%{name}-%{version}-%{release}-root
 
 %description
@@ -46,6 +51,7 @@ CFLAGS="$RPM_OPT_FLAGS" \
 	--prefix=/usr/X11R6 \
 	--with-gnu-readline \
 	--with-png \
+	--with-gd \
 	--with-x
 make
 
