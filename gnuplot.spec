@@ -18,7 +18,6 @@ BuildRequires:	libpng-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel
-Prereq:		/usr/sbin/fix-info-dir
 #BuildRequires:	xemacs-lisp-programming
 #or --without-lisp-files
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -85,10 +84,10 @@ gzip -9fn $RPM_BUILD_ROOT{%{_mandir}/man1/*,%{_infodir}/*}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %files
 %defattr(644,root,root,755)
