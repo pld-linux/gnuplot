@@ -66,7 +66,7 @@ edilmesinde kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 
 %build
 aclocal -I m4
-autoconf
+%{__autoconf}
 autoheader
 
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
