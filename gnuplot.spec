@@ -8,22 +8,21 @@ Summary(ru):	Программа для построения графиков математических выражений и данных
 Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
-Version:	3.7.2
-Release:	6
+Version:	3.8i.0
+Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	92f2ef0d6ab39a3fcaa0d008bf1b21c8
+# Source0-md5:	14b819c565153fee4f71eb5d47ec82bf
 Source1:	%{name}.desktop
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-acfix.patch
-Patch2:		%{name}-round.patch
-Patch3:		%{name}-info_install.patch
+Patch1:		%{name}-info_install.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libpng >= 1.0.8
+BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
 BuildRequires:	zlib-devel
@@ -79,13 +78,14 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
+rm -f missing
+%{__libtoolize}
 %{__aclocal} -I m4
-%{__autoconf}
 %{__autoheader}
+%{__autoconf}
+%{__automake}
 
 %configure \
 	--with-readline=gnu \
@@ -96,6 +96,9 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 	--without-linux-vga \
 	--without-tutorial
 
+# The source tarball incorrectly includes a file that should not be there.
+rm -f src/getcolor_x11.*
+
 %{__make}
 cd docs
 makeinfo gnuplot.texi
@@ -105,7 +108,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_infodir},%{_applnkdir}/Scientific/Plotting}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Plotting/%{name}.desktop
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -119,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/%{name}
 %{_mandir}/man1/*
 %{_datadir}/gnuplot.gih
 %{_infodir}/gnuplot*
