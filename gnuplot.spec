@@ -1,11 +1,11 @@
 Summary:	A program for plotting mathematical expressions and data
 Summary(de):	GNU-Plotter-Paket
 Summary(fr):	Le programme de traçage de courbe de GNU
-Summary(pl):	GNU program do robienia wykresów
+Summary(pl):	Program GNU do robienia wykresów
 Summary(tr):	Matematiksel görselleþtirme paketi
 Name:		gnuplot
 Version:	3.7.1
-Release:	11
+Release:	12
 License:	GPL
 Group:		Applications/Math
 Group(de):	Applikationen/Mathematik
@@ -13,6 +13,7 @@ Group(pl):	Aplikacje/Matematyczne
 Source0:	ftp://ftp.gnuplot.vt.edu/pub/gnuplot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
+Patch2:		%{name}-acfix.patch
 URL:		http://www.geocities.com/SiliconValley/Foothills/6647/
 BuildRequires:	readline-devel
 BuildRequires:	libpng >= 1.0.8
@@ -53,6 +54,7 @@ edilmesinde kullanýlan, çok yetenekli bir görselleþtirme aracýdýr.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 aclocal -I m4
