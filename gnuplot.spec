@@ -12,7 +12,7 @@ Version:	3.7.2
 Release:	6
 License:	GPL
 Group:		Applications/Math
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/gnuplot/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-acfix.patch
