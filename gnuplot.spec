@@ -9,12 +9,13 @@ Summary(tr):	Matematiksel gЖrselleЧtirme paketi
 Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
 Version:	3.8j.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
 # Source0-md5:	929e210e2d6585d34b029fa59d39915f
 Source1:	%{name}.desktop
+Source2:	%{name}.png
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
 Patch2:		%{name}-no_lisp.patch
@@ -107,8 +108,11 @@ makeinfo gnuplot.texi
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_infodir},%{_applnkdir}/Scientific/Plotting}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Plotting/%{name}.desktop
+install -d $RPM_BUILD_ROOT{%{_infodir},%{_applnkdir}/Scientific/Plotting} \
+	$RPM_BUILD_ROOT%{_pixmapsdir}
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Plotting
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -130,3 +134,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_infodir}/gnuplot*
 %{_applnkdir}/Scientific/Plotting/*
+%{_pixmapsdir}/*
