@@ -7,5 +7,5 @@ Exec=gnuplot
 Terminal=true
 Type=Application
 Encoding=UTF-8
-Categories=Education;Science;X-Plotting;
+Categories=ConsoleOnly;Education;Science;X-Plotting;
 # vi: encoding=utf-8
