@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	pdf	# don't use pdflib
+#
 Summary:	A program for plotting mathematical expressions and data
 Summary(de):	GNU-Plotter-Paket
 Summary(es):	Paquete para trazar grАficos
@@ -27,7 +31,7 @@ BuildRequires:	gd-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
-BuildRequires:	pdflib-devel
+%{?with_pdf:BuildRequires:	pdflib-devel}
 BuildRequires:	readline-devel
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
@@ -100,6 +104,7 @@ Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
 	--with-x \
 	--without-lisp-files \
 	--without-linux-vga \
+	%{!?with_pdf:--without-pdf} \
 	--without-tutorial
 
 # The source tarball incorrectly includes a file that should not be there.
