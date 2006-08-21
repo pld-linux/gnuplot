@@ -14,7 +14,7 @@ Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
 Name:		gnuplot
 Version:	4.0.0
 Release:	4
-License:	GPL
+License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
 # Source0-md5:	66258443d9f93cc4f46b147dac33e63a
