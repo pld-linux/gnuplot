@@ -140,5 +140,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %{_datadir}/%{name}
 %{_infodir}/gnuplot*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
