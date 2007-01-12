@@ -24,7 +24,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
 Patch2:		%{name}-no_lisp.patch
 URL:		http://gnuplot.sourceforge.net/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	gd-devel
 BuildRequires:	libpng-devel >= 1.0.8
