@@ -3,14 +3,14 @@
 %bcond_without	pdf	# don't use pdflib
 #
 Summary:	A program for plotting mathematical expressions and data
-Summary(de):	GNU-Plotter-Paket
-Summary(es):	Paquete para trazar grАficos
-Summary(fr):	Le programme de traГage de courbe de GNU
-Summary(pl):	Program GNU do robienia wykresСw
-Summary(pt_BR):	Pacote para traГar grАficos
-Summary(ru):	Программа для построения графиков математических выражений и данных
-Summary(tr):	Matematiksel gЖrselleЧtirme paketi
-Summary(uk):	Програма для побудови граф╕к╕в математичних вираз╕в та даних
+Summary(de.UTF-8):   GNU-Plotter-Paket
+Summary(es.UTF-8):   Paquete para trazar grц║ficos
+Summary(fr.UTF-8):   Le programme de traц╖age de courbe de GNU
+Summary(pl.UTF-8):   Program GNU do robienia wykresцЁw
+Summary(pt_BR.UTF-8):   Pacote para traц╖ar grц║ficos
+Summary(ru.UTF-8):   п÷я─п╬пЁя─п╟п╪п╪п╟ п╢п╩я▐ п©п╬я│я┌я─п╬п╣п╫п╦я▐ пЁя─п╟я└п╦п╨п╬п╡ п╪п╟я┌п╣п╪п╟я┌п╦я┤п╣я│п╨п╦я┘ п╡я▀я─п╟п╤п╣п╫п╦п╧ п╦ п╢п╟п╫п╫я▀я┘
+Summary(tr.UTF-8):   Matematiksel gц╤rselleе÷tirme paketi
+Summary(uk.UTF-8):   п÷я─п╬пЁя─п╟п╪п╟ п╢п╩я▐ п©п╬п╠я┐п╢п╬п╡п╦ пЁя─п╟я└я√п╨я√п╡ п╪п╟я┌п╣п╪п╟я┌п╦я┤п╫п╦я┘ п╡п╦я─п╟п╥я√п╡ я┌п╟ п╢п╟п╫п╦я┘
 Name:		gnuplot
 Version:	4.0.0
 Release:	5
@@ -47,41 +47,41 @@ program especially suited for scientific data representation. Gnuplot
 can be used to plot functions and data points in both two and three
 dimensions and in many different formats.
 
-%description -l de
+%description -l de.UTF-8
 Das GNU-Plotting-Paket. Dient zur grafischen Ausgabe von Daten in
 einem X-Fenster oder in eine Datei.
 
-%description -l es
-Este es el paquete GNU de ploteado. Se puede usar para crear grАficos
+%description -l es.UTF-8
+Este es el paquete GNU de ploteado. Se puede usar para crear grц║ficos
 en X Window o para archivo.
 
-%description -l fr
-Paquetage de tracИ de GNU. Il peut Йtre utilisИ pour faire des graphes
-de donnИes dans une fenЙtre X ou vers un fichier.
+%description -l fr.UTF-8
+Paquetage de tracц╘ de GNU. Il peut ц╙tre utilisц╘ pour faire des graphes
+de donnц╘es dans une fenц╙tre X ou vers un fichier.
 
-%description -l pl
-GNU plot rysuje wykresy, ktСre mo©na drukowaФ, zapisywaФ w pliku albo
-ogl╠daФ w okienku X.
+%description -l pl.UTF-8
+GNU plot rysuje wykresy, ktцЁre moе╪na drukowaд┤, zapisywaд┤ w pliku albo
+oglд┘daд┤ w okienku X.
 
-%description -l pt_BR
-Este И o pacote GNU de plotagem. Pode ser usado para gerar grАficos em
+%description -l pt_BR.UTF-8
+Este ц╘ o pacote GNU de plotagem. Pode ser usado para gerar grц║ficos em
 X Window ou para arquivo.
 
-%description -l ru
-Gnuplot - это интерактивная программа построения графиков, управляемая
-с командной строки. Gnuplot особенно хорошо подходит для презентации
-научных данных и может применяться для отображения функций и данных в
-2-х и 3-х измерениях и во многих различных форматах.
+%description -l ru.UTF-8
+Gnuplot - я█я┌п╬ п╦п╫я┌п╣я─п╟п╨я┌п╦п╡п╫п╟я▐ п©я─п╬пЁя─п╟п╪п╪п╟ п©п╬я│я┌я─п╬п╣п╫п╦я▐ пЁя─п╟я└п╦п╨п╬п╡, я┐п©я─п╟п╡п╩я▐п╣п╪п╟я▐
+я│ п╨п╬п╪п╟п╫п╢п╫п╬п╧ я│я┌я─п╬п╨п╦. Gnuplot п╬я│п╬п╠п╣п╫п╫п╬ я┘п╬я─п╬я┬п╬ п©п╬п╢я┘п╬п╢п╦я┌ п╢п╩я▐ п©я─п╣п╥п╣п╫я┌п╟я├п╦п╦
+п╫п╟я┐я┤п╫я▀я┘ п╢п╟п╫п╫я▀я┘ п╦ п╪п╬п╤п╣я┌ п©я─п╦п╪п╣п╫я▐я┌я▄я│я▐ п╢п╩я▐ п╬я┌п╬п╠я─п╟п╤п╣п╫п╦я▐ я└я┐п╫п╨я├п╦п╧ п╦ п╢п╟п╫п╫я▀я┘ п╡
+2-я┘ п╦ 3-я┘ п╦п╥п╪п╣я─п╣п╫п╦я▐я┘ п╦ п╡п╬ п╪п╫п╬пЁп╦я┘ я─п╟п╥п╩п╦я┤п╫я▀я┘ я└п╬я─п╪п╟я┌п╟я┘.
 
-%description -l tr
-Gnuplot, bir fonksiyonun ya da bir veri kЭmesinin grafiПinin elde
-edilmesinde kullanЩlan, Гok yetenekli bir gЖrselleЧtirme aracЩdЩr.
+%description -l tr.UTF-8
+Gnuplot, bir fonksiyonun ya da bir veri kц╪mesinin grafiд÷inin elde
+edilmesinde kullanд╠lan, ц╖ok yetenekli bir gц╤rselleе÷tirme aracд╠dд╠r.
 
-%description -l uk
-Gnuplot - це ╕нтерактивна програма побудови граф╕к╕в, яка керу╓ться з
-командного рядка. Gnuplot особливо гарно п╕дходить для презентац╕╖
-наукових даних та може застосовуватись для в╕дображення функц╕й та
-даних в 2-х та 3-х вим╕рах та в багатьох р╕зних форматах.
+%description -l uk.UTF-8
+Gnuplot - я├п╣ я√п╫я┌п╣я─п╟п╨я┌п╦п╡п╫п╟ п©я─п╬пЁя─п╟п╪п╟ п©п╬п╠я┐п╢п╬п╡п╦ пЁя─п╟я└я√п╨я√п╡, я▐п╨п╟ п╨п╣я─я┐я■я┌я▄я│я▐ п╥
+п╨п╬п╪п╟п╫п╢п╫п╬пЁп╬ я─я▐п╢п╨п╟. Gnuplot п╬я│п╬п╠п╩п╦п╡п╬ пЁп╟я─п╫п╬ п©я√п╢я┘п╬п╢п╦я┌я▄ п╢п╩я▐ п©я─п╣п╥п╣п╫я┌п╟я├я√я≈
+п╫п╟я┐п╨п╬п╡п╦я┘ п╢п╟п╫п╦я┘ я┌п╟ п╪п╬п╤п╣ п╥п╟я│я┌п╬я│п╬п╡я┐п╡п╟я┌п╦я│я▄ п╢п╩я▐ п╡я√п╢п╬п╠я─п╟п╤п╣п╫п╫я▐ я└я┐п╫п╨я├я√п╧ я┌п╟
+п╢п╟п╫п╦я┘ п╡ 2-я┘ я┌п╟ 3-я┘ п╡п╦п╪я√я─п╟я┘ я┌п╟ п╡ п╠п╟пЁп╟я┌я▄п╬я┘ я─я√п╥п╫п╦я┘ я└п╬я─п╪п╟я┌п╟я┘.
 
 %prep
 %setup -q
