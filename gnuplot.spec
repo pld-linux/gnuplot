@@ -3,14 +3,14 @@
 %bcond_without	pdf	# don't use pdflib
 #
 Summary:	A program for plotting mathematical expressions and data
-Summary(de.UTF-8):   GNU-Plotter-Paket
-Summary(es.UTF-8):   Paquete para trazar gráficos
-Summary(fr.UTF-8):   Le programme de traçage de courbe de GNU
-Summary(pl.UTF-8):   Program GNU do robienia wykresów
-Summary(pt_BR.UTF-8):   Pacote para traçar gráficos
-Summary(ru.UTF-8):   Программа для построения графиков математических выражений и данных
-Summary(tr.UTF-8):   Matematiksel görselleştirme paketi
-Summary(uk.UTF-8):   Програма для побудови графіків математичних виразів та даних
+Summary(de.UTF-8):	GNU-Plotter-Paket
+Summary(es.UTF-8):	Paquete para trazar gráficos
+Summary(fr.UTF-8):	Le programme de traçage de courbe de GNU
+Summary(pl.UTF-8):	Program GNU do robienia wykresów
+Summary(pt_BR.UTF-8):	Pacote para traçar gráficos
+Summary(ru.UTF-8):	Программа для построения графиков математических выражений и данных
+Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
+Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	4.0.0
 Release:	5
