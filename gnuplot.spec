@@ -13,7 +13,7 @@ Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	4.0.0
-Release:	5
+Release:	6
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -113,6 +113,8 @@ rm -f src/getcolor_x11.*
 %{__make}
 cd docs
 makeinfo gnuplot.texi
+cd ..
+cp docs/psdoc/ps_guide.ps .
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -135,6 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc ps_guide.ps
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/%{name}
 %{_mandir}/man1/*
