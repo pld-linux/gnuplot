@@ -114,7 +114,6 @@ rm -f src/getcolor_x11.*
 cd docs
 makeinfo gnuplot.texi
 cd ..
-cp docs/psdoc/ps_guide.ps .
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -137,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ps_guide.ps
+%doc docs/psdoc/ps_guide.ps
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/%{name}
 %{_mandir}/man1/*
