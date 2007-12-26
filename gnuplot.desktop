@@ -2,10 +2,9 @@
 Name=GNU plot
 Comment=GNU program for making plots
 Comment[pl]=Program GNU do robienia wykresów
-Icon=gnuplot.png
+Icon=gnuplot
 Exec=gnuplot
 Terminal=true
 Type=Application
-Encoding=UTF-8
 Categories=ConsoleOnly;Education;Science;X-Plotting;
 # vi: encoding=utf-8
