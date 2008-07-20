@@ -12,12 +12,12 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.2.2
+Version:	4.2.3
 Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	b9dd34e8210a65336b19ee408766a66f
+# Source0-md5:	6b6d22662df5101b308c465a722c43ce
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
@@ -126,19 +126,19 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
 %doc docs/psdoc/ps_guide.ps
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/gnuplot
 %attr(755,root,root) %{_libdir}/%{name}
-%{_mandir}/man1/*
+%{_mandir}/man1/gnuplot.1*
 %{_datadir}/%{name}
-%{_infodir}/gnuplot*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_infodir}/gnuplot.info*
+%{_desktopdir}/gnuplot.desktop
+%{_pixmapsdir}/gnuplot.png
