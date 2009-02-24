@@ -12,12 +12,12 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.2.3
-Release:	2
+Version:	4.2.4
+Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	6b6d22662df5101b308c465a722c43ce
+# Source0-md5:	3cde3b9232a2d81715bbaf75e1c87ecc
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
