@@ -6,6 +6,7 @@ Summary:	A program for plotting mathematical expressions and data
 Summary(de.UTF-8):	GNU-Plotter-Paket
 Summary(es.UTF-8):	Paquete para trazar gráficos
 Summary(fr.UTF-8):	Le programme de traçage de courbe de GNU
+Summary(hu.UTF-8):	Matematikai függvények és adatok ábrázolása
 Summary(pl.UTF-8):	Program GNU do robienia wykresów
 Summary(pt_BR.UTF-8):	Pacote para traçar gráficos
 Summary(ru.UTF-8):	Программа для построения графиков математических выражений и данных
@@ -57,6 +58,12 @@ en X Window o para archivo.
 %description -l fr.UTF-8
 Paquetage de tracé de GNU. Il peut être utilisé pour faire des graphes
 de données dans une fenêtre X ou vers un fichier.
+
+%description -l hu.UTF-8
+Gnuplot egy parancssor-vezérelt, interaktív függvényábrázoló program,
+amely különösen alkalmas tudományos adatok megjelenítésére. A Gnuplot
+alkalmas függvények és adathalmazok ábrázolására, kettő és három
+dimenzióban, különféle formátumokban.
 
 %description -l pl.UTF-8
 GNU plot rysuje wykresy, które można drukować, zapisywać w pliku albo
