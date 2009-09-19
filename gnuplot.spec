@@ -13,12 +13,12 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.2.5
+Version:	4.2.6
 Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	85d042f8efd7aae3d9cbfd85b14d06d2
+# Source0-md5:	c10468d74030e8bed0fd6865a45cf1fd
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
@@ -128,7 +128,8 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	appdefaultdir=%{_prefix}/share/X11/app-defaults
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -149,3 +150,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/gnuplot.info*
 %{_desktopdir}/gnuplot.desktop
 %{_pixmapsdir}/gnuplot.png
+%{_prefix}/share/X11/app-defaults/Gnuplot
