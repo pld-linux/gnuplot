@@ -1,7 +1,3 @@
-#
-# Conditional build:
-%bcond_without	pdf	# don't use pdflib
-#
 Summary:	A program for plotting mathematical expressions and data
 Summary(de.UTF-8):	GNU-Plotter-Paket
 Summary(es.UTF-8):	Paquete para trazar gráficos
@@ -13,16 +9,17 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.2.6
-Release:	1
+Version:	4.4.0
+Release:	0.1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	c10468d74030e8bed0fd6865a45cf1fd
+# Source0-md5:	e708665bd512153ad5c35252fe499059
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
+Patch2:		%{name}-lua.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
@@ -30,9 +27,11 @@ BuildRequires:	gd-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
-%{?with_pdf:BuildRequires:	pdflib-devel}
 BuildRequires:	readline-devel
 BuildRequires:	texinfo
+BuildRequires:	texlive
+BuildRequires:	texlive-latex
+BuildRequires:	texlive-format-pdflatex
 #BuildRequires:	xemacs-lisp-programming
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
@@ -93,6 +92,7 @@ Gnuplot - це інтерактивна програма побудови гра
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
