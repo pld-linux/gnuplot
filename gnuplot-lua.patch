@@ -1,0 +1,11 @@
+--- gnuplot-4.4.0-orig/configure.in	2010-03-15 16:23:38.963407453 +0100
++++ gnuplot-4.4.0/configure.in	2010-03-15 16:24:15.163122072 +0100
+@@ -617,7 +617,7 @@
+   with_lua=yes)
+ 
+ if test "${with_lua}" = yes ; then
+-  PKG_CHECK_MODULES(LUA, [lua], LUAFOUND=yes, [LUAFOUND=no])
++  PKG_CHECK_MODULES(LUA, [lua51], LUAFOUND=yes, [LUAFOUND=no])
+   if test $pkg_failed != no; then
+     AC_MSG_WARN([The lua terminal will not be compiled.])
+     with_lua=no
