@@ -23,15 +23,19 @@ Patch2:		%{name}-lua.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
+BuildRequires:	cairo-devel
 BuildRequires:	gd-devel
+BuildRequires:	glib2-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
+BuildRequires:	pango-devel
+BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	texinfo
 BuildRequires:	texlive
-BuildRequires:	texlive-latex
 BuildRequires:	texlive-format-pdflatex
+BuildRequires:	texlive-latex
 #BuildRequires:	xemacs-lisp-programming
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
