@@ -42,8 +42,6 @@ BuildRequires:	zlib-devel
 #or --without-lisp-files
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_datadir	%{_prefix}/share/misc
-
 %description
 Gnuplot is a command-line driven, interactive function plotting
 program especially suited for scientific data representation. Gnuplot
@@ -92,6 +90,13 @@ Gnuplot - це інтерактивна програма побудови гра
 наукових даних та може застосовуватись для відображення функцій та
 даних в 2-х та 3-х вимірах та в багатьох різних форматах.
 
+%package latex
+Summary:	LaTeX files
+Group:		Applications/Publishing/TeX
+
+%description latex
+LaTeX files.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -135,6 +140,8 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 	DESTDIR=$RPM_BUILD_ROOT \
 	appdefaultdir=%{_prefix}/share/X11/app-defaults
 
+mv $RPM_BUILD_ROOT%{_datadir}/texmf{,-dist}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -155,3 +162,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/gnuplot.desktop
 %{_pixmapsdir}/gnuplot.png
 %{_prefix}/share/X11/app-defaults/Gnuplot
+
+%files latex
+%defattr(644,root,root,755)
+%{_datadir}/texmf-dist/tex/latex/gnuplot
