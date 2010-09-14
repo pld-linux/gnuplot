@@ -9,23 +9,25 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.4.0
-Release:	0.1
+Version:	4.4.1
+Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
-Source0:	http://dl.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	e708665bd512153ad5c35252fe499059
+Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
+# Source0-md5:	296e2904363e508bd8cb7e8ea1d267e8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
 Patch2:		%{name}-lua.patch
+Patch3:		%{name}-wx-config.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	cairo-devel
 BuildRequires:	gd-devel
 BuildRequires:	glib2-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
@@ -36,6 +38,7 @@ BuildRequires:	texinfo
 BuildRequires:	texlive
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex
+BuildRequires:	wxGTK2-unicode-devel
 #BuildRequires:	xemacs-lisp-programming
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
@@ -102,6 +105,7 @@ LaTeX files.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p0
 
 %build
 %{__libtoolize}
@@ -138,7 +142,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	appdefaultdir=%{_prefix}/share/X11/app-defaults
+	appdefaultdir=%{_datadir}/X11/app-defaults
 
 mv $RPM_BUILD_ROOT%{_datadir}/texmf{,-dist}
 
@@ -161,7 +165,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/gnuplot.info*
 %{_desktopdir}/gnuplot.desktop
 %{_pixmapsdir}/gnuplot.png
-%{_prefix}/share/X11/app-defaults/Gnuplot
+%{_datadir}/X11/app-defaults/Gnuplot
 
 %files latex
 %defattr(644,root,root,755)
