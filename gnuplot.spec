@@ -30,6 +30,7 @@ BuildRequires:	glib2-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
+BuildRequires:	lua51-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	pango-devel
 BuildRequires:	pkgconfig

@@ -1,6 +1,6 @@
 --- gnuplot-4.4.0-orig/configure.in	2010-03-15 16:23:38.963407453 +0100
 +++ gnuplot-4.4.0/configure.in	2010-03-15 16:24:15.163122072 +0100
-@@ -617,7 +617,7 @@
+@@ -617,13 +617,15 @@
    with_lua=yes)
  
  if test "${with_lua}" = yes ; then
@@ -9,3 +9,24 @@
    if test $pkg_failed != no; then
      AC_MSG_WARN([The lua terminal will not be compiled.])
      with_lua=no
+   else
+     _libs="$LIBS"
++    _cppflags="$CPPFLAGS"
+     LIBS="$LIBS $LUA_LIBS"
++    CPPFLAGS="$CPPFLAGS $LUA_CFLAGS"
+   fi
+ 
+   AC_SEARCH_LIBS(luaL_openlibs, lua,
+@@ -652,11 +654,11 @@
+      AC_CHECK_HEADERS(lua.h,,
+        AC_MSG_WARN([please add path to lua.h to CPPFLAGS in Makefile]))
+      with_lua=yes
+-     LUA_LIBS='-llua'
+     ],
+     with_lua=no)
+  
+   LIBS="$_libs"
++  CPPFLAGS="$_cppflags"
+   if test "$with_lua" != no; then
+     TERMLIBS="$TERMLIBS $LUA_LIBS"
+     CPPFLAGS="$CPPFLAGS $LUA_CFLAGS"
