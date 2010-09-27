@@ -10,7 +10,7 @@ Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	4.4.1
-Release:	1
+Release:	2
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -21,6 +21,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
 Patch2:		%{name}-lua.patch
 Patch3:		%{name}-wx-config.patch
+Patch4:		%{name}-4.4.1-mp.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
@@ -107,6 +108,7 @@ LaTeX files.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p0
+%patch4 -p1
 
 %build
 %{__libtoolize}
