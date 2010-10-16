@@ -96,11 +96,17 @@ Gnuplot - це інтерактивна програма побудови гра
 даних в 2-х та 3-х вимірах та в багатьох різних форматах.
 
 %package latex
-Summary:	LaTeX files
+Summary:	gnuplot support for LaTeX
+Summary(pl.UTF-8):	Obsługa gnuplota dla LaTeXa
 Group:		Applications/Publishing/TeX
+# which subpackages? required tex packages: tikz,xxcolor,ifpdf,ifxetex
+Requires:	texlive
 
 %description latex
-LaTeX files.
+gnuplot support for LaTeX.
+
+%description latex -l pl.UTF-8
+Obsługa gnuplota dla LaTeXa.
 
 %prep
 %setup -q
@@ -118,15 +124,16 @@ LaTeX files.
 %{__automake}
 
 %configure \
-	--with-readline=gnu \
 	--enable-history-file \
+	--with-readline=gnu \
 	--with-png \
 	--with-gd \
 	--with-x \
 	--without-lisp-files \
 	--without-linux-vga \
 	%{!?with_pdf:--without-pdf} \
-	--without-tutorial
+	--without-tutorial \
+	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot
 
 # The source tarball incorrectly includes a file that should not be there.
 rm -f src/getcolor_x11.*
@@ -146,8 +153,6 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	appdefaultdir=%{_datadir}/X11/app-defaults
-
-mv $RPM_BUILD_ROOT%{_datadir}/texmf{,-dist}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
