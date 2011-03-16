@@ -1,32 +1,11 @@
---- gnuplot-4.4.0-orig/configure.in	2010-03-15 16:23:38.963407453 +0100
-+++ gnuplot-4.4.0/configure.in	2010-03-15 16:24:15.163122072 +0100
-@@ -617,13 +617,15 @@
-   with_lua=yes)
+--- gnuplot-4.4.3/configure.in.orig	2011-02-20 21:43:31.000000000 +0100
++++ gnuplot-4.4.3/configure.in	2011-03-16 15:09:34.731414618 +0100
+@@ -649,7 +649,7 @@
+   [test -z "${with_lua}" && with_lua=yes])
  
  if test "${with_lua}" = yes ; then
 -  PKG_CHECK_MODULES(LUA, [lua], LUAFOUND=yes, [LUAFOUND=no])
 +  PKG_CHECK_MODULES(LUA, [lua51], LUAFOUND=yes, [LUAFOUND=no])
    if test $pkg_failed != no; then
-     AC_MSG_WARN([The lua terminal will not be compiled.])
+     AC_MSG_WARN([Could not find support for lua using pkg-config.])
      with_lua=no
-   else
-     _libs="$LIBS"
-+    _cppflags="$CPPFLAGS"
-     LIBS="$LIBS $LUA_LIBS"
-+    CPPFLAGS="$CPPFLAGS $LUA_CFLAGS"
-   fi
- 
-   AC_SEARCH_LIBS(luaL_openlibs, lua,
-@@ -652,11 +654,11 @@
-      AC_CHECK_HEADERS(lua.h,,
-        AC_MSG_WARN([please add path to lua.h to CPPFLAGS in Makefile]))
-      with_lua=yes
--     LUA_LIBS='-llua'
-     ],
-     with_lua=no)
-  
-   LIBS="$_libs"
-+  CPPFLAGS="$_cppflags"
-   if test "$with_lua" != no; then
-     TERMLIBS="$TERMLIBS $LUA_LIBS"
-     CPPFLAGS="$CPPFLAGS $LUA_CFLAGS"

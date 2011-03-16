@@ -9,12 +9,12 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.4.2
+Version:	4.4.3
 Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	a4f0dd89f9b9334890464f687ddd9f50
+# Source0-md5:	639603752996f4923bc02c895fa03b45
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
@@ -24,16 +24,16 @@ Patch3:		%{name}-wx-config.patch
 Patch4:		%{name}-4.4.1-mp.patch
 URL:		http://gnuplot.sourceforge.net/
 BuildRequires:	autoconf >= 2.59-9
-BuildRequires:	automake
-BuildRequires:	cairo-devel
+BuildRequires:	automake >= 1:1.7.9
+BuildRequires:	cairo-devel >= 1.2
 BuildRequires:	gd-devel
 BuildRequires:	glib2-devel
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	lua51-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	pango-devel
+BuildRequires:	pango-devel > 1:1.10.2
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	texinfo
