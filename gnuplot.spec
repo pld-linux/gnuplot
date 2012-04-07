@@ -1,3 +1,7 @@
+
+# Conditional build:
+%bcond_with	qt	# build Qt terminal
+
 Summary:	A program for plotting mathematical expressions and data
 Summary(de.UTF-8):	GNU-Plotter-Paket
 Summary(es.UTF-8):	Paquete para trazar gráficos
@@ -9,20 +13,25 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.4.3
+Version:	4.6.0
 Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	639603752996f4923bc02c895fa03b45
+# Source0-md5:	8e6e92b4596ea0eb75e16a57fc79efec
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-info_install.patch
 Patch2:		%{name}-lua.patch
 Patch3:		%{name}-wx-config.patch
-Patch4:		%{name}-4.4.1-mp.patch
 URL:		http://gnuplot.sourceforge.net/
+%if %{with qt}
+BuildRequires:	QtCore-devel >= 4.5
+BuildRequires:	QtGui-devel >= 4.5
+BuildRequires:	QtNetwork-devel >= 4.5
+BuildRequires:	QtSvg-devel >= 4.5
+%endif
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1:1.7.9
 BuildRequires:	cairo-devel >= 1.2
@@ -114,7 +123,6 @@ Obsługa gnuplota dla LaTeXa.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p0
-%patch4 -p1
 
 %build
 %{__libtoolize}
@@ -125,6 +133,7 @@ Obsługa gnuplota dla LaTeXa.
 
 %configure \
 	--enable-history-file \
+	%{?with_qt:--enable-qt} \
 	--with-readline=gnu \
 	--with-png \
 	--with-gd \
