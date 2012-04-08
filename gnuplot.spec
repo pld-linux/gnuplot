@@ -1,7 +1,11 @@
-
+#
 # Conditional build:
+%bcond_with	ggi	# GGI driver
+%bcond_with	ggixmi	# GGI XMI support for pm3d
+%bcond_with	pdf	# PDF terminal (based on PDFLib)
 %bcond_with	qt	# build Qt terminal
-
+%bcond_with	svga	# Linux SVGA console driver
+#
 Summary:	A program for plotting mathematical expressions and data
 Summary(de.UTF-8):	GNU-Plotter-Paket
 Summary(es.UTF-8):	Paquete para trazar gráficos
@@ -31,25 +35,34 @@ BuildRequires:	QtCore-devel >= 4.5
 BuildRequires:	QtGui-devel >= 4.5
 BuildRequires:	QtNetwork-devel >= 4.5
 BuildRequires:	QtSvg-devel >= 4.5
+BuildRequires:	qt4-build >= 4.5
+BuildRequires:	qt4-linguist >= 4.5
 %endif
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1:1.7.9
-BuildRequires:	cairo-devel >= 1.2
-BuildRequires:	gd-devel
+BuildRequires:	cairo-devel >= 1.6
+BuildRequires:	gd-devel >= 2.0
 BuildRequires:	glib2-devel
 BuildRequires:	gtk+2-devel >= 2:2.8.0
+%{?with_ggi:BuildRequires:	libggi-devel}
+# ???
+%{?with_ggixmi:BuildRequires:	libggi-xmi-devel}
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtool
 BuildRequires:	lua51-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	pango-devel > 1:1.10.2
+# which version? it needs PDF_create_gstate,PDF_set_gstate symbols
+%{?with_pdf:BuildRequires:	pdflib-devel > 4.0.2}
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
+# libvga, libvgagl, lib3dkit
+%{?with_svga:BuildRequires:	svgalib-devel}
 BuildRequires:	texinfo
 BuildRequires:	texlive
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex
-BuildRequires:	wxGTK2-unicode-devel
+BuildRequires:	wxGTK2-unicode-devel >= 2.6
 #BuildRequires:	xemacs-lisp-programming
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
@@ -134,18 +147,18 @@ Obsługa gnuplota dla LaTeXa.
 %configure \
 	--enable-history-file \
 	%{?with_qt:--enable-qt} \
+	%{?with_ggi:--with-ggi} \
+	%{?with_svga:--with-linux-vga} \
 	--with-readline=gnu \
 	--with-png \
 	--with-gd \
 	--with-x \
+	%{?with_ggixmi:--with-xmi} \
 	--without-lisp-files \
 	--without-linux-vga \
 	%{!?with_pdf:--without-pdf} \
 	--without-tutorial \
 	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot
-
-# The source tarball incorrectly includes a file that should not be there.
-rm -f src/getcolor_x11.*
 
 %{__make}
 cd docs
