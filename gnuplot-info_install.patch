@@ -1,12 +1,16 @@
 diff -durN gnuplot-3.7.2.orig/docs/Makefile.in gnuplot-3.7.2/docs/Makefile.in
 --- gnuplot-3.7.2.orig/docs/Makefile.in	Fri Feb 15 15:04:34 2002
 +++ gnuplot-3.7.2/docs/Makefile.in	Mon Nov 11 09:55:22 2002
-@@ -358,7 +358,7 @@
+@@ -462,9 +462,10 @@
+ 	fi
  
- install-info: gnuplot.info
- 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
--	$(INSTALL_DATA) gnuplot.info $(DESTDIR)$(infodir)/gnuplot.info
+ install-info: gnuplot.info gnuplot-eldoc.el gnuplot-eldoc.elc
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
 +	$(INSTALL_DATA) gnuplot.info* $(DESTDIR)$(infodir)/
- 	@if (install-info --version && \
- 	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
- 	  echo "install-info --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/gnuplot.info";\
+ 	@if test "$(EMACS)" != no; then \
+-	    $(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir) $(DESTDIR)$(lispdir); \
+-	    $(INSTALL_DATA) gnuplot.info $(DESTDIR)$(infodir)/gnuplot.info; \
++	    $(top_srcdir)/mkinstalldirs $(DESTDIR)$(lispdir); \
+ 	    $(INSTALL_DATA) gnuplot-eldoc.el $(DESTDIR)$(lispdir)/gnuplot-eldoc.el; \
+ 	    $(INSTALL_DATA) gnuplot-eldoc.elc $(DESTDIR)$(lispdir)/gnuplot-eldoc.elc; \
+ 	else : ; fi
