@@ -38,7 +38,7 @@ BuildRequires:	QtSvg-devel >= 4.5
 BuildRequires:	qt4-build >= 4.5
 BuildRequires:	qt4-linguist >= 4.5
 %endif
-BuildRequires:	autoconf >= 2.59-9
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.7.9
 BuildRequires:	cairo-devel >= 1.6
 BuildRequires:	gd-devel >= 2.0
