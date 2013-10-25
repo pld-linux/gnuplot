@@ -1,7 +1,16 @@
 diff -durN gnuplot-3.7.2.orig/docs/Makefile.in gnuplot-3.7.2/docs/Makefile.in
 --- gnuplot-3.7.2.orig/docs/Makefile.in	Fri Feb 15 15:04:34 2002
 +++ gnuplot-3.7.2/docs/Makefile.in	Mon Nov 11 09:55:22 2002
-@@ -462,9 +462,10 @@
+@@ -451,7 +451,7 @@
+ # install section
+ # Sep 2013 (version 4.6.4) install-info is no longer a default target
+ # install: install-gih install-info install-pdf
+-install: install-gih install-pdf
++install: install-info install-gih install-pdf
+ 
+ install-gih: gnuplot.gih
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(GIHDIR)
+@@ -464,9 +464,10 @@
  	fi
  
  install-info: gnuplot.info gnuplot-eldoc.el gnuplot-eldoc.elc
