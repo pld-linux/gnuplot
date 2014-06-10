@@ -17,12 +17,12 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.6.4
-Release:	2
+Version:	4.6.5
+Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	2d8d1be8c8b7ee9e89b5003cbd8696ee
+# Source0-md5:	9a476b21f74bd99c876f1509d731a0f9
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
@@ -158,7 +158,8 @@ Obsługa gnuplota dla LaTeXa.
 	--without-linux-vga \
 	%{!?with_pdf:--without-pdf} \
 	--without-tutorial \
-	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot
+	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot \
+	--with-wx-single-threaded
 
 %{__make}
 cd docs
