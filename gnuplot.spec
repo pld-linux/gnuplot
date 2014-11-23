@@ -63,7 +63,7 @@ BuildRequires:	texlive
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex
 BuildRequires:	wxGTK2-unicode-devel >= 2.6
-#BuildRequires:	xemacs-lisp-programming
+BuildRequires:	xemacs
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 #or --without-lisp-files
@@ -145,6 +145,7 @@ Obsługa gnuplota dla LaTeXa.
 %{__automake}
 
 %configure \
+	EMACS=/usr/bin/xemacs \
 	--enable-history-file \
 	%{?with_qt:--enable-qt} \
 	%{?with_ggi:--with-ggi} \
