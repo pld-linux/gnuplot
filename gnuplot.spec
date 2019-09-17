@@ -18,7 +18,7 @@ Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	4.6.7
-Release:	1
+Release:	2
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -48,8 +48,7 @@ BuildRequires:	gtk+2-devel >= 2:2.8.0
 # ???
 %{?with_ggixmi:BuildRequires:	libggi-xmi-devel}
 BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	libtool
-BuildRequires:	lua51-devel
+BuildRequires:	lua51-devel >= 5.1
 BuildRequires:	ncurses-devel
 BuildRequires:	pango-devel > 1:1.10.2
 # which version? it needs PDF_create_gstate,PDF_set_gstate symbols
@@ -140,30 +139,28 @@ Obsługa gnuplota dla LaTeXa.
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 
 %configure \
 	EMACS=no \
-	--without-lisp-files \
 	--enable-history-file \
 	%{?with_qt:--enable-qt} \
+	--with-gd \
 	%{?with_ggi:--with-ggi} \
 	%{?with_svga:--with-linux-vga} \
-	--with-readline=gnu \
-	--with-png \
-	--with-gd \
-	--with-x \
-	%{?with_ggixmi:--with-xmi} \
 	--without-lisp-files \
-	--without-linux-vga \
 	%{!?with_pdf:--without-pdf} \
-	--without-tutorial \
+	--with-readline=gnu \
 	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot \
-	--with-wx-single-threaded
+	--without-tutorial \
+	--with-wx-single-threaded \
+	--with-x \
+	%{?with_ggixmi:--with-xmi}
 
 %{__make}
+
 cd docs
 makeinfo gnuplot.texi
 cd ..
@@ -192,7 +189,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/psdoc/ps_guide.ps
 %attr(755,root,root) %{_bindir}/gnuplot
-%attr(755,root,root) %{_libdir}/%{name}
+%dir %{_libexecdir}/%{name}
+%dir %{_libexecdir}/%{name}/4.6
+%{?with_qt:%attr(755,root,root) %{_libexecdir}/%{name}/4.6/gnuplot_qt}
+%attr(755,root,root) %{_libexecdir}/%{name}/4.6/gnuplot_x11
 %{_mandir}/man1/gnuplot.1*
 %{_datadir}/%{name}
 %{_infodir}/gnuplot.info*
