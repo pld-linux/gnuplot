@@ -1,9 +1,11 @@
 #
 # Conditional build:
+%bcond_without	emacs	# Emacs for info documentation
+%bcond_without	caca	# CACA driver
 %bcond_with	ggi	# GGI driver
 %bcond_with	ggixmi	# GGI XMI support for pm3d
-%bcond_with	pdf	# PDF terminal (based on PDFLib)
-%bcond_with	qt	# build Qt terminal
+%bcond_with	qt	# Qt terminal
+%bcond_with	qt4	# use Qt 4 instead of Qt 5
 %bcond_with	svga	# Linux SVGA console driver
 #
 Summary:	A program for plotting mathematical expressions and data
@@ -17,42 +19,52 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	4.6.7
-Release:	2
+Version:	5.2.7
+Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	fbcb4715acf228fcd2957f9d218b9167
+# Source0-md5:	27c5022f697e2522c0dbab439b9573b9
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-info_install.patch
-Patch2:		%{name}-lua.patch
-Patch3:		%{name}-wx-config.patch
 URL:		http://gnuplot.sourceforge.net/
 %if %{with qt}
+%if %{with qt4}
 BuildRequires:	QtCore-devel >= 4.5
 BuildRequires:	QtGui-devel >= 4.5
 BuildRequires:	QtNetwork-devel >= 4.5
 BuildRequires:	QtSvg-devel >= 4.5
 BuildRequires:	qt4-build >= 4.5
 BuildRequires:	qt4-linguist >= 4.5
+%else
+BuildRequires:	Qt5Core-devel >= 5.0
+BuildRequires:	Qt5Gui-devel >= 5.0
+BuildRequires:	Qt5Network-devel >= 5.0
+BuildRequires:	Qt5PrintSupport-devel >= 5.0
+BuildRequires:	Qt5Svg-devel >= 5.0
+BuildRequires:	Qt5Widgets-devel >= 5.0
+BuildRequires:	qt5-build >= 5.0
+BuildRequires:	qt5-linguist >= 5.0
 %endif
-BuildRequires:	autoconf >= 2.60
-BuildRequires:	automake >= 1:1.7.9
+%endif
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	cairo-devel >= 1.6
+%{?with_emacs:BuildRequires:	xemacs}
 BuildRequires:	gd-devel >= 2.0
-BuildRequires:	glib2-devel
+BuildRequires:	glib2-devel >= 1:2.28
 BuildRequires:	gtk+2-devel >= 2:2.8.0
+%{?with_caca:BuildRequires:	libcaca-devel >= 0.99-0.beta15}
+BuildRequires:	libcerf-devel
 %{?with_ggi:BuildRequires:	libggi-devel}
 # ???
 %{?with_ggixmi:BuildRequires:	libggi-xmi-devel}
 BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	lua51-devel >= 5.1
+BuildRequires:	lua53 >= 5.3
+BuildRequires:	lua53-devel >= 5.3
 BuildRequires:	ncurses-devel
-BuildRequires:	pango-devel > 1:1.10.2
-# which version? it needs PDF_create_gstate,PDF_set_gstate symbols
-%{?with_pdf:BuildRequires:	pdflib-devel > 4.0.2}
+BuildRequires:	pango-devel > 1:1.22
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 # libvga, libvgagl, lib3dkit
@@ -62,10 +74,12 @@ BuildRequires:	texlive
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex
 BuildRequires:	wxGTK2-unicode-devel >= 2.6
-#BuildRequires:	xemacs
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
-#or --without-lisp-files
+Requires:	cairo >= 1.6
+Requires:	glib2 >= 1:2.28
+%{?with_caca:Requires:	libcaca >= 0.99-0.beta15}
+Requires:	pango > 1:1.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -132,70 +146,86 @@ Obsługa gnuplota dla LaTeXa.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p0
 
 %build
-%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 
 %configure \
-	EMACS=no \
+	WX_CONFIG=/usr/bin/wx-gtk2-unicode-config \
 	--enable-history-file \
-	%{?with_qt:--enable-qt} \
+	%{?with_caca:--with-caca} \
 	--with-gd \
 	%{?with_ggi:--with-ggi} \
 	%{?with_svga:--with-linux-vga} \
-	--without-lisp-files \
-	%{!?with_pdf:--without-pdf} \
+	--with-qt=%{?with_qt:%{?with_qt4:qt4}%{!?with_qt4:qt5}}%{!?with_qt:no} \
 	--with-readline=gnu \
 	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot \
 	--without-tutorial \
-	--with-wx-single-threaded \
 	--with-x \
 	%{?with_ggixmi:--with-xmi}
 
 %{__make}
 
-cd docs
-makeinfo gnuplot.texi
-cd ..
+%if %{with emacs}
+%{__make} -C docs info
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_infodir},%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
-
-%{__make} install \
+%{__make} install %{?with_emacs:install-info} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	appdefaultdir=%{_datadir}/X11/app-defaults
+
+install -d $RPM_BUILD_ROOT%{_mandir}/ja/man1
+%{__mv} $RPM_BUILD_ROOT%{_mandir}/man1/gnuplot-ja.1 $RPM_BUILD_ROOT%{_mandir}/ja/man1/gnuplot.1
+
+[ ! -f $RPM_BUILD_ROOT%{_desktopdir}/gnuplot.desktop ]
+[ ! -f $RPM_BUILD_ROOT%{_pixmapsdir}/gnuplot.png ]
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%if %{with emacs}
 %post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
+%endif
 
 %files
 %defattr(644,root,root,755)
-%doc docs/psdoc/ps_guide.ps
+%doc BUGS ChangeLog Copyright FAQ.pdf NEWS README RELEASE_NOTES TODO docs/psdoc/ps_guide.ps
 %attr(755,root,root) %{_bindir}/gnuplot
 %dir %{_libexecdir}/%{name}
-%dir %{_libexecdir}/%{name}/4.6
-%{?with_qt:%attr(755,root,root) %{_libexecdir}/%{name}/4.6/gnuplot_qt}
-%attr(755,root,root) %{_libexecdir}/%{name}/4.6/gnuplot_x11
+%dir %{_libexecdir}/%{name}/5.2
+%{?with_qt:%attr(755,root,root) %{_libexecdir}/%{name}/5.2/gnuplot_qt}
+%attr(755,root,root) %{_libexecdir}/%{name}/5.2/gnuplot_x11
 %{_mandir}/man1/gnuplot.1*
-%{_datadir}/%{name}
+%lang(ja) %{_mandir}/ja/man1/gnuplot.1*
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/5.2
+%{_datadir}/%{name}/5.2/PostScript
+%{_datadir}/%{name}/5.2/js
+%{_datadir}/%{name}/5.2/lua
+%{_datadir}/%{name}/5.2/colors_*.gp
+%{_datadir}/%{name}/5.2/gnuplot.gih
+%{_datadir}/%{name}/5.2/gnuplotrc
+%if %{with qt}
+%dir %{_datadir}/%{name}/5.2/qt
+%lang(fr) %{_datadir}/%{name}/5.2/qt/qtgnuplot_fr.qm
+%lang(ja) %{_datadir}/%{name}/5.2/qt/qtgnuplot_ja.qm
+%endif
+%if %{with emacs}
 %{_infodir}/gnuplot.info*
+%endif
 %{_desktopdir}/gnuplot.desktop
 %{_pixmapsdir}/gnuplot.png
 %{_datadir}/X11/app-defaults/Gnuplot
