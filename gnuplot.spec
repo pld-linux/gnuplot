@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	5.2.7
-Release:	1
+Release:	2
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
