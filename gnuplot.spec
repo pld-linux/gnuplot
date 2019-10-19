@@ -51,7 +51,10 @@ BuildRequires:	qt5-linguist >= 5.0
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	cairo-devel >= 1.6
-%{?with_emacs:BuildRequires:	xemacs}
+%if %{with emacs}
+BuildRequires:	xemacs
+BuildRequires:	xemacs-texinfo-pkg
+%endif
 BuildRequires:	gd-devel >= 2.0
 BuildRequires:	glib2-devel >= 1:2.28
 BuildRequires:	gtk+2-devel >= 2:2.8.0
