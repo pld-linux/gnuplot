@@ -7,6 +7,7 @@
 %bcond_with	qt	# Qt terminal
 %bcond_with	qt4	# use Qt 4 instead of Qt 5
 %bcond_with	svga	# Linux SVGA console driver
+%bcond_without	wxwidgets	# wxWidgets terminal
 #
 Summary:	A program for plotting mathematical expressions and data
 Summary(de.UTF-8):	GNU-Plotter-Paket
@@ -76,7 +77,7 @@ BuildRequires:	texinfo
 BuildRequires:	texlive
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex
-BuildRequires:	wxGTK2-unicode-devel >= 2.6
+%{?with_wxwidgets:BuildRequires:	wxGTK2-unicode-devel >= 2.6}
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 Requires:	cairo >= 1.6
@@ -159,6 +160,7 @@ Obsługa gnuplota dla LaTeXa.
 %configure \
 	WX_CONFIG=/usr/bin/wx-gtk2-unicode-config \
 	--enable-history-file \
+	%{!?with_wxwidgets:--disable-wxwidgets} \
 	%{?with_caca:--with-caca} \
 	--with-gd \
 	%{?with_ggi:--with-ggi} \
