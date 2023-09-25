@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	5.2.8
-Release:	1
+Release:	2
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -58,7 +58,7 @@ BuildRequires:	xemacs-texinfo-pkg
 %endif
 BuildRequires:	gd-devel >= 2.0
 BuildRequires:	glib2-devel >= 1:2.28
-BuildRequires:	gtk+2-devel >= 2:2.8.0
+BuildRequires:	gtk+3-devel
 %{?with_caca:BuildRequires:	libcaca-devel >= 0.99-0.beta15}
 BuildRequires:	libcerf-devel
 %{?with_ggi:BuildRequires:	libggi-devel}
@@ -77,7 +77,7 @@ BuildRequires:	texinfo
 BuildRequires:	texlive
 BuildRequires:	texlive-format-pdflatex
 BuildRequires:	texlive-latex
-%{?with_wxwidgets:BuildRequires:	wxGTK2-unicode-devel >= 2.6}
+%{?with_wxwidgets:BuildRequires:	wxGTK3-unicode-devel >= 2.6}
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 Requires:	cairo >= 1.6
@@ -158,7 +158,7 @@ Obsługa gnuplota dla LaTeXa.
 %{__automake}
 
 %configure \
-	WX_CONFIG=/usr/bin/wx-gtk2-unicode-config \
+	WX_CONFIG=/usr/bin/wx-gtk3-unicode-config \
 	--enable-history-file \
 	%{!?with_wxwidgets:--disable-wxwidgets} \
 	%{?with_caca:--with-caca} \
