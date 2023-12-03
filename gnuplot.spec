@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
 Version:	5.2.8
-Release:	2
+Release:	3
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
@@ -65,8 +65,8 @@ BuildRequires:	libcerf-devel
 # ???
 %{?with_ggixmi:BuildRequires:	libggi-xmi-devel}
 BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	lua53 >= 5.3
-BuildRequires:	lua53-devel >= 5.3
+BuildRequires:	lua54 >= 5.4
+BuildRequires:	lua54-devel >= 5.4
 BuildRequires:	ncurses-devel
 BuildRequires:	pango-devel > 1:1.22
 BuildRequires:	pkgconfig
