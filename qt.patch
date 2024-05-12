@@ -1,0 +1,88 @@
+diff -up gnuplot-6.0.0/src/qtterminal/qt_embed_example.h._orig gnuplot-6.0.0/src/qtterminal/qt_embed_example.h
+--- gnuplot-6.0.0/src/qtterminal/qt_embed_example.h._orig	2023-12-18 20:04:32.000000000 +0100
++++ gnuplot-6.0.0/src/qtterminal/qt_embed_example.h	2024-05-10 14:03:14.281439483 +0200
+@@ -48,7 +48,7 @@
+ 
+ #include <QtCore>
+ #include <QtGui>
+-#include <QWidget>
++#include <QtWidgets/QWidget>
+ 
+ class QtGnuplotWidget;
+ class QPlainTextEdit;
+diff -up gnuplot-6.0.0/src/qtterminal/QtGnuplotWidget.h._orig gnuplot-6.0.0/src/qtterminal/QtGnuplotWidget.h
+--- gnuplot-6.0.0/src/qtterminal/QtGnuplotWidget.h._orig	2022-05-26 21:35:50.000000000 +0200
++++ gnuplot-6.0.0/src/qtterminal/QtGnuplotWidget.h	2024-05-10 15:33:01.644798333 +0200
+@@ -46,7 +46,7 @@
+ 
+ #include "QtGnuplotEvent.h"
+ 
+-#include <QWidget>
++#include <QtWidgets/QWidget>
+ #include <QPainter>
+ 
+ /* I had to add these in order to link against qt5 rather than qt4 */
+@@ -51,7 +51,7 @@
+ 
+ /* I had to add these in order to link against qt5 rather than qt4 */
+ #if QT_VERSION >= 0x050000
+-#include <QtWidgets>
++#include <QtWidgets/QtWidgets>
+ #include <QtPrintSupport/QPrinter>
+ #include <QtPrintSupport/QPrintDialog>
+ #endif
+diff -up gnuplot-6.0.0/src/qtterminal/QtGnuplotApplication.h._orig gnuplot-6.0.0/src/qtterminal/QtGnuplotApplication.h
+--- gnuplot-6.0.0/src/qtterminal/QtGnuplotApplication.h._orig	2017-12-22 18:32:30.000000000 +0100
++++ gnuplot-6.0.0/src/qtterminal/QtGnuplotApplication.h	2024-05-10 15:45:24.063586150 +0200
+@@ -46,7 +46,7 @@
+ 
+ #include "QtGnuplotEvent.h"
+ 
+-#include <QApplication>
++#include <QtWidgets/QApplication>
+ #include <QMap>
+ 
+ class QtGnuplotWindow;
+diff -up gnuplot-6.0.0/src/qtterminal/QtGnuplotItems.h._orig gnuplot-6.0.0/src/qtterminal/QtGnuplotItems.h
+--- gnuplot-6.0.0/src/qtterminal/QtGnuplotItems.h._orig	2017-12-22 18:32:30.000000000 +0100
++++ gnuplot-6.0.0/src/qtterminal/QtGnuplotItems.h	2024-05-10 15:47:24.579511849 +0200
+@@ -44,7 +44,7 @@
+ #ifndef QTGNUPLOTITEMS_H
+ #define QTGNUPLOTITEMS_H
+ 
+-#include <QGraphicsItem>
++#include <QtWidgets/QGraphicsItem>
+ #include <QFont>
+ #include <QPen>
+ 
+diff -up gnuplot-6.0.0/src/qtterminal/QtGnuplotScene.h._orig gnuplot-6.0.0/src/qtterminal/QtGnuplotScene.h
+--- gnuplot-6.0.0/src/qtterminal/QtGnuplotScene.h._orig	2022-05-26 21:35:50.000000000 +0200
++++ gnuplot-6.0.0/src/qtterminal/QtGnuplotScene.h	2024-05-10 15:48:40.249046369 +0200
+@@ -47,8 +47,8 @@
+ #include "QtGnuplotEvent.h"
+ #include "QtGnuplotItems.h"
+ 
+-#include <QGraphicsScene>
+-#include <QGraphicsItemGroup>
++#include <QtWidgets/QGraphicsScene>
++#include <QtWidgets/QGraphicsItemGroup>
+ 
+ #if (QT_VERSION < QT_VERSION_CHECK(4, 7, 0))
+ # include <QTime>
+diff -up gnuplot-6.0.0/src/qtterminal/QtGnuplotWindow.h._orig gnuplot-6.0.0/src/qtterminal/QtGnuplotWindow.h
+--- gnuplot-6.0.0/src/qtterminal/QtGnuplotWindow.h._orig	2023-12-18 20:04:32.000000000 +0100
++++ gnuplot-6.0.0/src/qtterminal/QtGnuplotWindow.h	2024-05-10 16:10:27.124236899 +0200
+@@ -46,11 +46,11 @@
+ 
+ #include "QtGnuplotEvent.h"
+ 
+-#include <QMainWindow>
++#include <QtWidgets/QMainWindow>
+ 
+ /* I had to add these in order to link against qt5 rather than qt4 */
+ #if QT_VERSION >= 0x050000
+-#include <QtWidgets>
++#include <QtWidgets/QtWidgets>
+ #endif
+ 
+ class QLabel;

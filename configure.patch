@@ -1,0 +1,21 @@
+diff -up gnuplot-6.0.0/configure.ac._orig gnuplot-6.0.0/configure.ac
+--- gnuplot-6.0.0/configure.ac._orig	2023-12-19 00:28:58.000000000 +0100
++++ gnuplot-6.0.0/configure.ac	2024-05-10 13:40:06.723299475 +0200
+@@ -1024,7 +1024,7 @@ AC_ARG_ENABLE(function-blocks,dnl
+                [ Define to support defining a function as a here document])
+    )
+ 
+-Enable parsing of deprecated syntax
++dnl Enable parsing of deprecated syntax
+ AC_ARG_ENABLE(backward-compatibility,dnl
+ [  --enable-backward-compatibility       enable some deprecated syntax ],
+   [if test "$enableval" = yes; then
+@@ -1062,7 +1062,7 @@ if test "${enable_qt}" = yes ; then
+     pkg_failed="not_tried"
+     if test "x${with_qt}" != "xqt5"; then
+       AC_MSG_CHECKING([Checking for Qt6 support libraries])
+-      PKG_CHECK_MODULES_NOFAIL(QT, [Qt6Core Qt6Gui Qt6Network Qt6Svg Qt6PrintSupport Qt6Core5Compat])
++      PKG_CHECK_MODULES_NOFAIL(QT, [Qt6Core Qt6Gui Qt6Network Qt6Svg Qt6PrintSupport Qt6Core5Compat Qt6Widgets])
+     fi
+     if test $pkg_failed = no; then
+       QT6LOC=`$PKG_CONFIG --variable=libexecdir Qt6Core`

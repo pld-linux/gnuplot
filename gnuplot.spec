@@ -5,9 +5,16 @@
 %bcond_with	ggi	# GGI driver
 %bcond_with	ggixmi	# GGI XMI support for pm3d
 %bcond_with	qt	# Qt terminal
-%bcond_with	qt4	# use Qt 4 instead of Qt 5
+%bcond_with	qt6	# use Qt 6 instead of Qt 5
 %bcond_with	svga	# Linux SVGA console driver
 %bcond_without	wxwidgets	# wxWidgets terminal
+%bcond_with	tests		# run tests
+
+%if %{without qt}
+%undefine	with_tests
+%endif
+
+
 #
 Summary:	A program for plotting mathematical expressions and data
 Summary(de.UTF-8):	GNU-Plotter-Paket
@@ -20,24 +27,28 @@ Summary(ru.UTF-8):	Программа для построения графико
 Summary(tr.UTF-8):	Matematiksel görselleştirme paketi
 Summary(uk.UTF-8):	Програма для побудови графіків математичних виразів та даних
 Name:		gnuplot
-Version:	5.2.8
-Release:	3
+Version:	6.0.0
+Release:	1
 License:	distributable (with modifications properly marked if any)
 Group:		Applications/Math
 Source0:	http://downloads.sourceforge.net/gnuplot/%{name}-%{version}.tar.gz
-# Source0-md5:	2df8767c7399bee57a96296d46b4d5fb
+# Source0-md5:	10246eb96bbf3a151d6eb9bbcc223e4e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-info.patch
+Patch1:		configure.patch
+Patch2:		qt.patch
 URL:		http://gnuplot.sourceforge.net/
 %if %{with qt}
-%if %{with qt4}
-BuildRequires:	QtCore-devel >= 4.5
-BuildRequires:	QtGui-devel >= 4.5
-BuildRequires:	QtNetwork-devel >= 4.5
-BuildRequires:	QtSvg-devel >= 4.5
-BuildRequires:	qt4-build >= 4.5
-BuildRequires:	qt4-linguist >= 4.5
+%if %{with qt6}
+BuildRequires:	Qt6Core-devel >= 6.0
+BuildRequires:	Qt6Gui-devel >= 6.0
+BuildRequires:	Qt6Network-devel >= 6.0
+BuildRequires:	Qt6PrintSupport-devel >= 6.0
+BuildRequires:	Qt6Svg-devel >= 6.0
+BuildRequires:	Qt6Qt5Compat-devel >= 6.0
+BuildRequires:	qt6-build >= 6.0
+BuildRequires:	qt6-linguist >= 6.0
 %else
 BuildRequires:	Qt5Core-devel >= 5.0
 BuildRequires:	Qt5Gui-devel >= 5.0
@@ -150,6 +161,8 @@ Obsługa gnuplota dla LaTeXa.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %{__aclocal} -I m4
@@ -165,7 +178,7 @@ Obsługa gnuplota dla LaTeXa.
 	--with-gd \
 	%{?with_ggi:--with-ggi} \
 	%{?with_svga:--with-linux-vga} \
-	--with-qt=%{?with_qt:%{?with_qt4:qt4}%{!?with_qt4:qt5}}%{!?with_qt:no} \
+	--with-qt=%{?with_qt:%{?with_qt6:qt6}%{!?with_qt6:qt5}}%{!?with_qt:no} \
 	--with-readline=gnu \
 	--with-texdir=%{_datadir}/texmf-dist/tex/latex/gnuplot \
 	--without-tutorial \
@@ -173,6 +186,10 @@ Obsługa gnuplota dla LaTeXa.
 	%{?with_ggixmi:--with-xmi}
 
 %{__make}
+
+%if %{with tests}
+QT_QPA_PLATFORM=offscreen %{__make} check
+%endif
 
 %if %{with emacs}
 %{__make} -C docs info
@@ -185,9 +202,6 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %{__make} install %{?with_emacs:install-info} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	appdefaultdir=%{_datadir}/X11/app-defaults
-
-install -d $RPM_BUILD_ROOT%{_mandir}/ja/man1
-%{__mv} $RPM_BUILD_ROOT%{_mandir}/man1/gnuplot-ja.1 $RPM_BUILD_ROOT%{_mandir}/ja/man1/gnuplot.1
 
 [ ! -f $RPM_BUILD_ROOT%{_desktopdir}/gnuplot.desktop ]
 [ ! -f $RPM_BUILD_ROOT%{_pixmapsdir}/gnuplot.png ]
@@ -207,26 +221,26 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS ChangeLog Copyright FAQ.pdf NEWS README RELEASE_NOTES TODO docs/psdoc/ps_guide.ps
+%doc BUGS Copyright FAQ.pdf NEWS README RELEASE_NOTES docs/psdoc/ps_guide.ps
 %attr(755,root,root) %{_bindir}/gnuplot
 %dir %{_libexecdir}/%{name}
-%dir %{_libexecdir}/%{name}/5.2
-%{?with_qt:%attr(755,root,root) %{_libexecdir}/%{name}/5.2/gnuplot_qt}
-%attr(755,root,root) %{_libexecdir}/%{name}/5.2/gnuplot_x11
+%dir %{_libexecdir}/%{name}/6.0
+%{?with_qt:%attr(755,root,root) %{_libexecdir}/%{name}/6.0/gnuplot_qt}
+%attr(755,root,root) %{_libexecdir}/%{name}/6.0/gnuplot_x11
 %{_mandir}/man1/gnuplot.1*
 %lang(ja) %{_mandir}/ja/man1/gnuplot.1*
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/5.2
-%{_datadir}/%{name}/5.2/PostScript
-%{_datadir}/%{name}/5.2/js
-%{_datadir}/%{name}/5.2/lua
-%{_datadir}/%{name}/5.2/colors_*.gp
-%{_datadir}/%{name}/5.2/gnuplot.gih
-%{_datadir}/%{name}/5.2/gnuplotrc
+%dir %{_datadir}/%{name}/6.0
+%{_datadir}/%{name}/6.0/PostScript
+%{_datadir}/%{name}/6.0/js
+%{_datadir}/%{name}/6.0/lua
+%{_datadir}/%{name}/6.0/colors_*.gp
+%{_datadir}/%{name}/6.0/gnuplot.gih
+%{_datadir}/%{name}/6.0/gnuplotrc
 %if %{with qt}
-%dir %{_datadir}/%{name}/5.2/qt
-%lang(fr) %{_datadir}/%{name}/5.2/qt/qtgnuplot_fr.qm
-%lang(ja) %{_datadir}/%{name}/5.2/qt/qtgnuplot_ja.qm
+%dir %{_datadir}/%{name}/6.0/qt
+%lang(fr) %{_datadir}/%{name}/6.0/qt/qtgnuplot_fr.qm
+%lang(ja) %{_datadir}/%{name}/6.0/qt/qtgnuplot_ja.qm
 %endif
 %if %{with emacs}
 %{_infodir}/gnuplot.info*
